@@ -1,16 +1,7 @@
 name: Build
 
 on:
-  push:
-    paths:
-      - ".github/workflows/build.yml"
-      - "app/**"
-  pull_request:
-    paths:
-      - ".github/workflows/build.yml"
-      - "app/**"
-  schedule:
-    - cron: "22 4 * * *"
+  workflow_call:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name == 'schedule' }}
